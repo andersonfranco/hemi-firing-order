@@ -54,30 +54,6 @@
 		text-shadow: 1px 1px 3px #555; /* FF3.5+, Opera 9+, Saf1+, Chrome, IE10 */
 	}
 </style>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
-<script type="text/javascript">
-$(function() {
- 	var s = new Array(1,8,4,3,6,5,7,2);
-	var c = new Array('ffa5a5', 'ff7673', 'ff4540');
-	var h = new Array();
-	var n = -1;
-	setInterval(function() {
-		if (n >= 0) {
-			$('#p' + s[n]).removeClass("fire");
-			if (h.push(s[n]) > 3) {
-				$('#p' + h[0]).css('background-color', '');
-				h.shift();
-			}
-			for (var i in h) {
-				$('#p' + h[i]).css('background-color', '#'+c[i]);
-			}
-		}
-		n = (n + 1) % 8;
-		$('#p' + s[n]).css('background-color', '');
-		$('#p' + s[n]).addClass("fire");
-	}, 150);
-});
-</script>
 <body>
 	<h1>HEMI firing order</h1>
 	<h2>1 - 8 - 4 - 3 - 6 - 5 - 7 - 2</h2>
@@ -89,4 +65,31 @@ $(function() {
 		<p>426 HEMI</p>
 	</div>
 </body>
+<script type="text/javascript">
+	const ready = (callback) => {
+	  if (document.readyState != "loading") callback();
+	  else document.addEventListener("DOMContentLoaded", callback);
+	};
+	ready(() => {
+		 var s = new Array(1,8,4,3,6,5,7,2);
+		var c = new Array('ffa5a5', 'ff7673', 'ff4540');
+		var h = new Array();
+		var n = -1;
+		setInterval(function() {
+			if (n >= 0) {
+				document.getElementById('p' + s[n]).classList.remove("fire");
+				if (h.push(s[n]) > 3) {
+					document.getElementById('p' + h[0]).style.backgroundColor = '';
+					h.shift();
+				}
+				for (var i in h) {
+					document.getElementById('p' + h[i]).style.backgroundColor = '#'+c[i];
+				}
+			}
+			n = (n + 1) % 8;
+			document.getElementById('p' + s[n]).style.backgroundColor = '';
+			document.getElementById('p' + s[n]).classList.add("fire");
+		}, 150);
+	});
+</script>
 </html>
