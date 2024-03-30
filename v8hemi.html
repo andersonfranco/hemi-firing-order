@@ -71,10 +71,10 @@
 	  else document.addEventListener("DOMContentLoaded", callback);
 	};
 	ready(() => {
-		 var s = new Array(1,8,4,3,6,5,7,2);
-		var c = new Array('ffa5a5', 'ff7673', 'ff4540');
-		var h = new Array();
-		var n = -1;
+		const s = new Array(1,8,4,3,6,5,7,2);
+		const c = new Array('ffa5a5', 'ff7673', 'ff4540');
+		let h = new Array();
+		let n = -1;
 		setInterval(function() {
 			if (n >= 0) {
 				document.getElementById('p' + s[n]).classList.remove("fire");
@@ -82,7 +82,7 @@
 					document.getElementById('p' + h[0]).style.backgroundColor = '';
 					h.shift();
 				}
-				for (var i in h) {
+				for (let i in h) {
 					document.getElementById('p' + h[i]).style.backgroundColor = '#'+c[i];
 				}
 			}
